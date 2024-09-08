@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Images/AsteroidsSpriteSheet.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/EnemyAndAsteroidExplosion.wav" type="AudioStream" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+gravity_scale = 0.0
+contacts_reported = 10000
+contact_monitor = true
+linear_damp = 0.0
+angular_damp = 0.0
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 1.6, 1.3 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 32, 2, 32, 26 )
+
+[node name="EnemyLaserSpawn" type="Position2D" parent="."]
+position = Vector2( 0, 20 )
+rotation = 3.14159
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )

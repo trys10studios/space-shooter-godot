@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/PlayerLaser.gd" type="Script" id=1]
+[ext_resource path="res://Images/AsteroidsSpriteSheet.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/PlayerLaser.wav" type="AudioStream" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 1.0
+height = 15.0
+
+[node name="PlayerLaser" type="RigidBody2D"]
+collision_layer = 2
+gravity_scale = 0.0
+contacts_reported = 10000
+contact_monitor = true
+can_sleep = false
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 38, 31, 3, 18 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
